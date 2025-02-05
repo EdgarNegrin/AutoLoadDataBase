@@ -5,7 +5,9 @@ import os
 NOTION_TOKEN = os.getenv('NOTION_TOKEN')
 DATABASE_A_ID = os.getenv('DATABASE_A_ID')
 DATABASE_B_ID = os.getenv('DATABASE_B_ID')
-IDS_FILAS_B = os.getenv('IDS_FILAS_B')
+IDS_FILAS_B_str = os.getenv('IDS_FILAS_B')
+
+IDS_FILAS_B = IDS_FILAS_B_str.split("\n")
 
 HEADERS = {
     "Authorization": f"Bearer {NOTION_TOKEN}",
