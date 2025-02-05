@@ -1,0 +1,28 @@
+name: Notion Sync
+on:
+  schedule:
+    - cron: '0 3 * * *'  # Se ejecuta todos los días a las 03:00 UTC
+  workflow_dispatch:  # Permite ejecutarlo manualmente si lo necesitas
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+
+      - name: Instalar dependencias
+        run: pip install requests
+
+      - name: Ejecutar Script
+        run: python Script.py
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          DATABASE_A_ID: ${{ secrets.DATABASE_A_ID }}
+          DATABASE_B_ID: ${{ secrets.DATABASE_B_ID }}
+          IDS_FILAS_B: ${{ secrets.IDS_FILAS_B }}
