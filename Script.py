@@ -1,13 +1,17 @@
 import requests
+import os
+
+# Usa os.environ para obtener las variables de entorno
+NOTION_TOKEN = os.getenv('NOTION_TOKEN')
+DATABASE_A_ID = os.getenv('DATABASE_A_ID')
+DATABASE_B_ID = os.getenv('DATABASE_B_ID')
+IDS_FILAS_B = os.getenv('IDS_FILAS_B')
 
 HEADERS = {
     "Authorization": f"Bearer {NOTION_TOKEN}",
     "Notion-Version": "2022-06-28",
     "Content-Type": "application/json"
 }
-
-# Lista de IDs de las filas de la base de datos B que quieres actualizar
-
 
 def obtener_filas_a():
     """Obtiene todas las filas de la base de datos A manejando la paginación."""
