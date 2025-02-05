@@ -25,4 +25,4 @@ jobs:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           DATABASE_A_ID: ${{ secrets.DATABASE_A_ID }}
           DATABASE_B_ID: ${{ secrets.DATABASE_B_ID }}
-          DATALINES: ${{ secrets.DATABASE_B_ID }}
+          IDS_FILAS_B: ${{ secrets.IDS_FILAS_B }}
