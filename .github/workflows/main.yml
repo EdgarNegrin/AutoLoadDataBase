@@ -19,8 +19,8 @@ jobs:
       - name: Instalar dependencias
         run: pip install requests
 
-      - name: Ejecutar script
-        run: python script.py
+      - name: Ejecutar Script
+        run: python Script.py
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           DATABASE_A_ID: ${{ secrets.DATABASE_A_ID }}
