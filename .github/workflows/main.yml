@@ -1,7 +1,7 @@
 name: Notion Sync
 on:
   schedule:
-    - cron: '0 3 * * *'  # Se ejecuta todos los días a las 03:00 UTC
+    - cron: '0 0 * * *'  # Se ejecuta todos los días a las 03:00 UTC
   workflow_dispatch:  # Permite ejecutarlo manualmente si lo necesitas
 
 jobs:
