@@ -15,6 +15,14 @@ HEADERS = {
     "Content-Type": "application/json"
 }
 
+# Función para obtener el límite de solicitudes desde los encabezados
+def obtener_limite_solicitudes(response):
+    remaining = response.headers.get('X-RateLimit-Remaining')
+    limit = response.headers.get('X-RateLimit-Limit')
+    reset_time = response.headers.get('X-RateLimit-Reset')
+    print (f"Solicitudes restantes: {remaining}/{limit}. Se reinicia en {reset_time}.")
+    return remaining, limit, reset_time
+
 def obtener_filas_a():
     """Obtiene todas las filas de la base de datos A manejando la paginación."""
     ids_filas_a = set()
@@ -22,6 +30,7 @@ def obtener_filas_a():
     payload = {}  # Cuerpo vacío para la primera solicitud
     while True:
         response = requests.post(url_a, headers=HEADERS, json=payload)
+        obtener_limite_solicitudes(response)
         if response.status_code != 200:
             print(f"Error al obtener filas de A: {response.text}")
             return set()
@@ -43,6 +52,7 @@ def actualizar_filas_b(ids_filas_a):
     for id_fila_b in IDS_FILAS_B:
         url_get_b = f"https://api.notion.com/v1/pages/{id_fila_b}"
         response_get_b = requests.get(url_get_b, headers=HEADERS)
+        obtener_limite_solicitudes(response_get_b)
 
         if response_get_b.status_code == 200:
             fila_b = response_get_b.json()
