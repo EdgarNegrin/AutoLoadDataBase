@@ -46,7 +46,7 @@ def actualizar_filas_b(ids_filas_a):
 
         if response_get_b.status_code == 200:
             fila_b = response_get_b.json()
-            relaciones_actuales = fila_b['properties'].get("Relacion con A", {}).get("relation", [])
+            relaciones_actuales = fila_b['properties'].get("Prioridad2", {}).get("relation", [])
             ids_actuales_b = {relacion["id"] for relacion in relaciones_actuales}
 
             # Solo agregar los registros de A que NO estén ya en B
